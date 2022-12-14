@@ -30,6 +30,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter_form_builder: ^7.7.0
+  form_builder_validators: ^8.4.0
   flutter_localizations: # Add this line
     sdk: flutter         # Add this line
   flutter:
