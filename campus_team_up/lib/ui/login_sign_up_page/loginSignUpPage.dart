@@ -4,27 +4,22 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
-class LoginSignUpPage extends StatefulWidget {
+class LoginSignUpPage extends StatelessWidget {
   LoginSignUpPage({Key? key}) : super(key: key);
 
-  final formKey = GlobalKey<FormBuilderState>();
-  @override
-  State<LoginSignUpPage> createState() => _LoginSignUpPageState();
-}
-
-class _LoginSignUpPageState extends State<LoginSignUpPage> {
   @override
   Widget build(BuildContext context) {
     final logic = Get.put(LoginSignUpPageLogic());
-  if (!logic.inited) {
-    logic.setUpStates(Get.currentRoute, context, widget.formKey);
-  }
+    if (!logic.inited) {
+      
+      logic.setUpStates(Get.currentRoute, context);
+    }
     return Scaffold(body: _body(context));
   }
 }
 
 Widget _body(BuildContext context) {
- final logic = Get.find<LoginSignUpPageLogic>();
+  final logic = Get.find<LoginSignUpPageLogic>();
   return Stack(
     children: [
       //TODO 夜间模式？
@@ -72,7 +67,6 @@ Widget _backGround() {
 }
 
 Widget _form(LoginSignUpPageLogic logic) {
-  
   return FormBuilder(
     key: logic.logicFormKey,
     child: Column(children: [
@@ -151,8 +145,13 @@ Widget _form(LoginSignUpPageLogic logic) {
 
 Widget _loginSignUpHint(LoginSignUpPageLogic logic) {
   return TextButton(
-      onPressed: () {
-        Get.offAllNamed(logic.switchRoute);
+      onPressed: () async{
+
+        //TODO make sure softkeyboard dismissd, ortherwise will gobalkey duplicate
+        FocusManager.instance.primaryFocus?.unfocus();
+        await Future.delayed(Duration(milliseconds: 200));
+
+        Get.offNamed('${logic.switchRoute}');
       },
       child: Text(logic.switchText));
 }

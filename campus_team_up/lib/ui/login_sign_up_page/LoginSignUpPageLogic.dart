@@ -17,12 +17,12 @@ class LoginSignUpPageLogic extends GetxController {
   final signUpRoute = '/signUp';
   final loginRoute = '/login';
 
-  setUpStates(String currentRoute, BuildContext context,GlobalKey<FormBuilderState> formKey) {
+  setUpStates(String currentRoute, BuildContext context) {
     //TODO bug try switch page when softkeyboard popup, and it will not shows up when break point
-    // will got formkey(globalKey) duplicated 
+    // will got formkey(globalKey) duplicated
     // print('setup');
     inited = true;
-    logicFormKey = formKey;
+    logicFormKey = GlobalKey<FormBuilderState>(debugLabel: currentRoute);
     if (currentRoute == signUpRoute) {
       showCaptcha = true;
       buttonText = "i18n signup";
@@ -36,7 +36,8 @@ class LoginSignUpPageLogic extends GetxController {
     }
   }
 
-  switchTextVisibility(){
+
+  switchTextVisibility() {
     textVisibility = !textVisibility;
     update();
   }
