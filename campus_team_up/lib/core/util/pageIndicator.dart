@@ -1,0 +1,4 @@
+enum PageIndicator{
+  homePage,
+  settingPage
+}
