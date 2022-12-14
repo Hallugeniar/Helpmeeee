@@ -11,7 +11,6 @@ class LoginSignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.put(LoginSignUpPageLogic());
     if (!logic.inited) {
-      
       logic.setUpStates(Get.currentRoute, context);
     }
     return Scaffold(body: _body(context));
@@ -125,16 +124,16 @@ Widget _form(LoginSignUpPageLogic logic) {
             bool? validation = logic.logicFormKey.currentState?.validate();
 
             //DEBUG BEGIN
-            // validation = true;
+            validation = true;
             //DEBUG END
 
             //  if(await checkUserExist()){
             // logic.formKey.currentState?.invalidateField(
             //     name: 'userAccount', errorText: 'user not exist.');
 
-            // if (validation == true) {
-            //   Get.offAllNamed('/signUp');
-            // }
+            if (validation == true) {
+              Get.offAllNamed('/discovery');
+            }
 
             //     ?.invalidate('Email already taken');
           },
@@ -145,8 +144,7 @@ Widget _form(LoginSignUpPageLogic logic) {
 
 Widget _loginSignUpHint(LoginSignUpPageLogic logic) {
   return TextButton(
-      onPressed: () async{
-
+      onPressed: () async {
         //TODO make sure softkeyboard dismissd, ortherwise will gobalkey duplicate
         FocusManager.instance.primaryFocus?.unfocus();
         await Future.delayed(Duration(milliseconds: 200));
