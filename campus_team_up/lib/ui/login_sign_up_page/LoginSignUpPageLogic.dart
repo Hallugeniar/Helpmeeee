@@ -8,7 +8,7 @@ class LoginSignUpPageLogic extends GetxController {
   bool inited = false;
 
   //todo random key for certain route page?
-  late GlobalKey<FormBuilderState> formKey;
+  late GlobalKey<FormBuilderState> logicFormKey;
   late bool showCaptcha;
   late String buttonText;
   late String switchText;
@@ -17,9 +17,12 @@ class LoginSignUpPageLogic extends GetxController {
   final signUpRoute = '/signUp';
   final loginRoute = '/login';
 
-  setUpStates(String currentRoute, BuildContext context) {
+  setUpStates(String currentRoute, BuildContext context,GlobalKey<FormBuilderState> formKey) {
+    //TODO bug try switch page when softkeyboard popup, and it will not shows up when break point
+    // will got formkey(globalKey) duplicated 
+    // print('setup');
     inited = true;
-    formKey = GlobalKey<FormBuilderState>();
+    logicFormKey = formKey;
     if (currentRoute == signUpRoute) {
       showCaptcha = true;
       buttonText = "i18n signup";

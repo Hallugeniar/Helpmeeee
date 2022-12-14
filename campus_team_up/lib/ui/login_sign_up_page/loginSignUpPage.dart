@@ -4,21 +4,27 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
-class LoginSignUpPage extends StatelessWidget {
+class LoginSignUpPage extends StatefulWidget {
   LoginSignUpPage({Key? key}) : super(key: key);
 
+  final formKey = GlobalKey<FormBuilderState>();
+  @override
+  State<LoginSignUpPage> createState() => _LoginSignUpPageState();
+}
+
+class _LoginSignUpPageState extends State<LoginSignUpPage> {
   @override
   Widget build(BuildContext context) {
     final logic = Get.put(LoginSignUpPageLogic());
+  if (!logic.inited) {
+    logic.setUpStates(Get.currentRoute, context, widget.formKey);
+  }
     return Scaffold(body: _body(context));
   }
 }
 
 Widget _body(BuildContext context) {
-  final logic = Get.put(LoginSignUpPageLogic());
-  if (!logic.inited) {
-    logic.setUpStates(Get.currentRoute, context);
-  }
+ final logic = Get.find<LoginSignUpPageLogic>();
   return Stack(
     children: [
       //TODO 夜间模式？
@@ -66,8 +72,9 @@ Widget _backGround() {
 }
 
 Widget _form(LoginSignUpPageLogic logic) {
+  
   return FormBuilder(
-    key: logic.formKey,
+    key: logic.logicFormKey,
     child: Column(children: [
       Row(
         children: [
@@ -99,8 +106,8 @@ Widget _form(LoginSignUpPageLogic logic) {
                 decoration: InputDecoration(
                     suffixIcon: IconButton(
                   icon: _logic.textVisibility
-                      ? Icon(Icons.visibility)
-                      : Icon(Icons.visibility_off),
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
                   onPressed: () => {_logic.switchTextVisibility()},
                 )),
               ),
@@ -121,7 +128,7 @@ Widget _form(LoginSignUpPageLogic logic) {
         ),
       ElevatedButton(
           onPressed: () {
-            bool? validation = logic.formKey.currentState?.validate();
+            bool? validation = logic.logicFormKey.currentState?.validate();
 
             //DEBUG BEGIN
             // validation = true;
@@ -130,7 +137,7 @@ Widget _form(LoginSignUpPageLogic logic) {
             //  if(await checkUserExist()){
             // logic.formKey.currentState?.invalidateField(
             //     name: 'userAccount', errorText: 'user not exist.');
-            
+
             // if (validation == true) {
             //   Get.offAllNamed('/signUp');
             // }
