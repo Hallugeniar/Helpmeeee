@@ -14,6 +14,7 @@ class LoginSignUpPageLogic extends GetxController {
   late String switchText;
   late String switchRoute;
   bool textVisibility = false;
+  IconData icon = Icons.person;
   final signUpRoute = '/signUp';
   final loginRoute = '/login';
 
@@ -28,6 +29,7 @@ class LoginSignUpPageLogic extends GetxController {
       buttonText = "i18n signup";
       switchText = "i18n aleary have account?";
       switchRoute = loginRoute;
+      icon = Icons.person_add;
     } else {
       showCaptcha = false;
       buttonText = "i18n login";

@@ -22,13 +22,7 @@ class Post extends StatelessWidget {
         color: Colors.blue,
       ),
     );
-    final buttonStyle = ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFADAFA)),
-        foregroundColor: MaterialStateProperty.all<Color>(Color(0xFFC43DF3)),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.white))));
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -74,18 +68,8 @@ class Post extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
-                onPressed: () {},
-                style: buttonStyle,
-                child: Row(
-                  children: [Icon(Icons.image), Text('i18n add image')],
-                )),
-            ElevatedButton(
-                onPressed: () {},
-                style: buttonStyle,
-                child: Row(
-                  children: [Icon(Icons.tag), Text('i18n add tag')],
-                ))
+            _button(Icons.image, 'i18n add image', () {}),
+            _button(Icons.tag, 'i18n add tag', () {}),
           ],
         )
       ],
@@ -104,4 +88,20 @@ class Post extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _button(IconData icon, String buttonText, Function() onClick) {
+  final buttonStyle = ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFADAFA)),
+      foregroundColor: MaterialStateProperty.all<Color>(Color(0xFFC43DF3)),
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+              side: BorderSide(color: Colors.white))));
+  return ElevatedButton(
+      onPressed: onClick,
+      style: buttonStyle,
+      child: Row(
+        children: [Icon(icon), Text(buttonText)],
+      ));
 }

@@ -14,9 +14,9 @@ class LoginSignUpPage extends StatelessWidget {
     if (!logic.inited) {
       logic.setUpStates(Get.currentRoute, context);
     }
-       return GradientBackground(
+    return GradientBackground(
       body: _body(context),
-
+      whited: false,
     );
   }
 }
@@ -30,9 +30,11 @@ Widget _body(BuildContext context) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.people,
-              size: 99,
+            GetBuilder<LoginSignUpPageLogic>(
+              builder: (_logic) => Icon(
+                _logic.icon,
+                size: 99,
+              ),
             ),
             _form(logic),
             Row(
@@ -52,8 +54,6 @@ Widget _body(BuildContext context) {
     ],
   );
 }
-
-
 
 Widget _form(LoginSignUpPageLogic logic) {
   return FormBuilder(
@@ -110,6 +110,14 @@ Widget _form(LoginSignUpPageLogic logic) {
           ],
         ),
       ElevatedButton(
+          style: ButtonStyle(
+              shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
+              backgroundColor:
+                  MaterialStateProperty.all<Color>(Colors.transparent),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.white)))),
           onPressed: () {
             bool? validation = logic.logicFormKey.currentState?.validate();
 
