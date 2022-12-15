@@ -1,4 +1,6 @@
 enum PageIndicator{
-  homePage,
-  settingPage
+  discovery,
+  promulgate,
+  inbox,
+  mine
 }
