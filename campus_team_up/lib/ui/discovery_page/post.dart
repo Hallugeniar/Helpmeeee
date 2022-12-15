@@ -48,7 +48,7 @@ class Post extends StatelessWidget {
                     _tag(),
                     Spacer(),
                     Icon(Icons.message),
-                    Text('replie count'),
+                    Text('reply count'),
                     Icon(Icons.thumb_up),
                     Text('like count'),
                   ],
