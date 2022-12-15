@@ -1,41 +1,35 @@
 import 'package:campus_team_up/core/util/pageIndicator.dart';
-import 'package:campus_team_up/ui/discovery_page/discoveryPageLogic.dart';
-import 'package:campus_team_up/ui/discovery_page/post.dart';
 import 'package:campus_team_up/ui/navigation_bar/navigation_bar.dart';
+import 'package:campus_team_up/ui/promulgate_page/promulgatePageLogic.dart';
+import 'package:campus_team_up/ui/promulgate_page/post.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DiscoveryPage extends StatelessWidget {
-  DiscoveryPage({Key? key}) : super(key: key);
+class PromulgatePage extends StatelessWidget {
+  PromulgatePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final logic = Get.put(DiscoveryPageLogic());
+    final logic = Get.put(PromulgatePageLogic());
     if (!logic.inited) {
       logic.setUpStates(Get.currentRoute, context);
     }
     return Scaffold(
       body: _body(context),
       bottomNavigationBar:
-          sNavigationBar(pageIndicator: PageIndicator.discovery),
+          sNavigationBar(pageIndicator: PageIndicator.promulgate),
     );
   }
 }
 
 Widget _body(BuildContext context) {
-  final logic = Get.find<DiscoveryPageLogic>();
+  final logic = Get.find<PromulgatePageLogic>();
   return Stack(
     children: [
       _backGround(),
-      ListView.separated(
-        itemCount: 10,
-        itemBuilder: (context, index) => Container(
-          alignment: Alignment.center,
-          child: Post(),
-        ),
-        separatorBuilder: (context, index) => SizedBox(
-          height: 30,
-        ),
+      ListView(
+        shrinkWrap: true,
+        children: [Center(child: Post())],
       ),
     ],
   );

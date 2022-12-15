@@ -1,6 +1,6 @@
 enum PageIndicator{
   discovery,
-  post,
+  promulgate,
   inbox,
   mine
 }
