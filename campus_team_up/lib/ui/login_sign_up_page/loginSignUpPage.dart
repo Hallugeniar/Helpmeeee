@@ -37,7 +37,7 @@ Widget _body(BuildContext context) {
                 size: 99,
               ),
             ),
-            _form(logic, context),
+            SingleChildScrollView(child: _form(logic, context)),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
