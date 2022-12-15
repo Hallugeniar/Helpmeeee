@@ -1,3 +1,4 @@
+import 'package:campus_team_up/ui/gradient_background/gradient_background.dart';
 import 'package:campus_team_up/ui/login_sign_up_page/LoginSignUpPageLogic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -13,7 +14,10 @@ class LoginSignUpPage extends StatelessWidget {
     if (!logic.inited) {
       logic.setUpStates(Get.currentRoute, context);
     }
-    return Scaffold(body: _body(context));
+       return GradientBackground(
+      body: _body(context),
+
+    );
   }
 }
 
@@ -22,7 +26,6 @@ Widget _body(BuildContext context) {
   return Stack(
     children: [
       //TODO 夜间模式？
-      _backGround(),
       Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,20 +53,7 @@ Widget _body(BuildContext context) {
   );
 }
 
-Widget _backGround() {
-  return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-    colors: [
-      Color(0xFFCCEFEB),
-      Color(0xFF63DAFF),
-      Color(0xFF8B81EC),
-      Color(0xFFC72AFE)
-    ],
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-  )));
-}
+
 
 Widget _form(LoginSignUpPageLogic logic) {
   return FormBuilder(
