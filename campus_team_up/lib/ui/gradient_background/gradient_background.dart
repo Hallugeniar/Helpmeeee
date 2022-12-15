@@ -11,10 +11,12 @@ class GradientBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: [
-        _backGround(),
-        body
-      ]),
+      body: SafeArea(
+        child: Stack(children: [
+          _backGround(),
+          body
+        ]),
+      ),
       bottomNavigationBar: bottomNavigationBar,
     );
   }
