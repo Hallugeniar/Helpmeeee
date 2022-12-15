@@ -1,4 +1,5 @@
 import 'package:campus_team_up/core/util/pageIndicator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:campus_team_up/ui/gradient_background/gradient_background.dart';
 import 'package:campus_team_up/ui/mine_page/minePageLogic.dart';
 import 'package:campus_team_up/ui/navigation_bar/navigation_bar.dart';
@@ -33,9 +34,9 @@ Widget _body(BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [_avatar(), Text('userAccount@scnu.com')],
       ),
-      _button(Icons.badge, 'i18n alter nickName', () {}),
-      _button(Icons.person, 'i18n alter profile', () {}),
-      _button(Icons.logout, 'i18n logout', () {
+      _button(Icons.badge, AppLocalizations.of(context).change_nike_name, () {}),
+      _button(Icons.person, AppLocalizations.of(context).change_profile, () {}),
+      _button(Icons.logout, AppLocalizations.of(context).logout, () {
         Get.offAllNamed('/login');
       })
     ],

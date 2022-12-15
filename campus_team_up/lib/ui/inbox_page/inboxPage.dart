@@ -1,5 +1,5 @@
 import 'package:campus_team_up/core/util/pageIndicator.dart';
-import 'package:campus_team_up/ui/discovery_page/post.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:campus_team_up/ui/gradient_background/gradient_background.dart';
 import 'package:campus_team_up/ui/inbox_page/inboxPageLogic.dart';
 import 'package:campus_team_up/ui/navigation_bar/navigation_bar.dart';
@@ -43,7 +43,7 @@ Widget _body(BuildContext context) {
               borderRadius: BorderRadius.all(Radius.circular(15)),
               border: Border.all(color: Color(0xFFAFAFAF), width: 2),
             ),
-            child: Center(child: Text('i18n no message')),
+            child: Center(child: Text(AppLocalizations.of(context).no_message)),
           ),
         ),
       )

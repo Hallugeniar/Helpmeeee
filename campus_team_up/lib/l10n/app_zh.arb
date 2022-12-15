@@ -2,5 +2,25 @@
   "helloWorld": "Hello World!",
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
-  }
+  },
+  "account":"账号",
+  "password":"密码",
+  "verification_code":"验证码",
+  "login":"登录",
+  "sign_up":"注册",
+  "dont_have_an_account":"没有账号？前往注册",
+  "already_have_an_account":"已有账号？点击登录",
+  "campus_team_up_version":"校园组队 版本",
+  "discovery":"发现",
+  "publish":"发布",
+  "inbox":"消息",    
+  "mine":"我的",
+  "add_image":"添加图片",
+  "add_tag":"添加标签",
+  "no_message":"暂无新消息 ",
+  "change_nike_name":"修改昵称",
+  "change_profile":"修改个人信息",
+  "logout":"退出登录",
+  "post_content_template":"有没有一起去竞赛的小伙伴吖~"
+
 }

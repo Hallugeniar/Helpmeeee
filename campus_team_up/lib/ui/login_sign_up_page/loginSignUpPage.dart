@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginSignUpPage extends StatelessWidget {
   LoginSignUpPage({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ Widget _body(BuildContext context) {
                 size: 99,
               ),
             ),
-            _form(logic),
+            _form(logic, context),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -49,19 +50,19 @@ Widget _body(BuildContext context) {
       Positioned(
         bottom: MediaQuery.of(context).size.width * 0.05,
         right: MediaQuery.of(context).size.height * 0.05,
-        child: _versionInfo(),
+        child: _versionInfo(context),
       ),
     ],
   );
 }
 
-Widget _form(LoginSignUpPageLogic logic) {
+Widget _form(LoginSignUpPageLogic logic, BuildContext context) {
   return FormBuilder(
     key: logic.logicFormKey,
     child: Column(children: [
       Row(
         children: [
-          Text('userAccount'),
+          Text(AppLocalizations.of(context).account),
           Expanded(
             child: FormBuilderTextField(
               name: 'userAccount',
@@ -76,7 +77,7 @@ Widget _form(LoginSignUpPageLogic logic) {
       ),
       Row(
         children: [
-          Text('userPwd'),
+          Text(AppLocalizations.of(context).password),
           Expanded(
             child: GetBuilder<LoginSignUpPageLogic>(
               builder: (_logic) => FormBuilderTextField(
@@ -101,7 +102,7 @@ Widget _form(LoginSignUpPageLogic logic) {
       if (logic.showCaptcha)
         Row(
           children: [
-            Text('captcha'),
+            Text(AppLocalizations.of(context).verification_code),
             Expanded(
               child: FormBuilderTextField(
                 name: 'captcha',
@@ -152,6 +153,6 @@ Widget _loginSignUpHint(LoginSignUpPageLogic logic) {
       child: Text(logic.switchText));
 }
 
-Widget _versionInfo() {
-  return Text('ybyb 1.0');
+Widget _versionInfo(BuildContext context) {
+  return Text('${AppLocalizations.of(context).campus_team_up_version} 1.0');
 }

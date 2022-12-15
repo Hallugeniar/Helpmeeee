@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 
 enum PageState { forgot, login, signUp }
@@ -26,14 +27,14 @@ class LoginSignUpPageLogic extends GetxController {
     logicFormKey = GlobalKey<FormBuilderState>(debugLabel: currentRoute);
     if (currentRoute == signUpRoute) {
       showCaptcha = true;
-      buttonText = "i18n signup";
-      switchText = "i18n aleary have account?";
+      buttonText = AppLocalizations.of(context).sign_up;
+      switchText = AppLocalizations.of(context).already_have_an_account;
       switchRoute = loginRoute;
       icon = Icons.person_add;
     } else {
       showCaptcha = false;
-      buttonText = "i18n login";
-      switchText = "i18n don't have account?";
+      buttonText = AppLocalizations.of(context).login;
+      switchText = AppLocalizations.of(context).dont_have_an_account;
       switchRoute = signUpRoute;
     }
   }

@@ -12,19 +12,19 @@ class sNavigationBar extends StatelessWidget {
   _navigationBarItems(BuildContext context) => [
         BottomNavigationBarItem(
           icon: const Icon(Icons.search),
-          label: AppLocalizations.of(context)!.helloWorld,
+          label: AppLocalizations.of(context).discovery,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.post_add),
-          label: AppLocalizations.of(context)!.helloWorld,
+          label: AppLocalizations.of(context).publish,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.inbox),
-          label: AppLocalizations.of(context)!.helloWorld,
+          label: AppLocalizations.of(context).inbox,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.person),
-          label: AppLocalizations.of(context)!.helloWorld,
+          label: AppLocalizations.of(context).mine,
         ),
       ];
 

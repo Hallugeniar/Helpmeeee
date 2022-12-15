@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Post extends StatelessWidget {
   const Post({super.key});
@@ -47,7 +48,8 @@ class Post extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'i18n 有没有一起去竞赛的小伙伴吖~'),
+                          hintText: AppLocalizations.of(context)
+                              .post_content_template),
                       maxLines: null,
                     ),
                   ),
@@ -68,8 +70,8 @@ class Post extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _button(Icons.image, 'i18n add image', () {}),
-            _button(Icons.tag, 'i18n add tag', () {}),
+            _button(Icons.image, AppLocalizations.of(context).add_image, () {}),
+            _button(Icons.tag, AppLocalizations.of(context).add_tag, () {}),
           ],
         )
       ],
